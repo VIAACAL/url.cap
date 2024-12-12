@@ -12,7 +12,7 @@ export async function GET(
     const shortUrl = await prisma.shortUrl.findUnique({
       where: { shortId },
       include: {
-        clicks: {
+        clicksData: {
           select: {
             createdAt: true,
             referrer: true,
@@ -34,11 +34,11 @@ export async function GET(
 
     // Calculate analytics
     const analytics = {
-      totalClicks: shortUrl.clicks,
+      totalClicks: shortUrl.clicksData,
       originalUrl: shortUrl.originalUrl,
       createdAt: shortUrl.createdAt,
-      clickHistory: shortUrl.clicks,
-      referrerSources: shortUrl.clicks.reduce((acc: { [key: string]: number }, click) => {
+      clickHistory: shortUrl.clicksData,
+      referrerSources: shortUrl.clicksData.reduce((acc: { [key: string]: number }, click) => {
         acc[click.referrer] = (acc[click.referrer] || 0) + 1;
         return acc;
       }, {}),
