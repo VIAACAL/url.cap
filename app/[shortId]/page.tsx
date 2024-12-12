@@ -21,7 +21,7 @@ export default async function ShortUrlRedirect({ params }: Props) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-2xl font-bold mb-4">URL Not Found</h1>
-        <p>The shortened URL you're looking for doesn't exist.</p>
+        <p>The shortened URL you&apos;re looking for doesn&apos;t exist.</p>
       </div>
     );
   }

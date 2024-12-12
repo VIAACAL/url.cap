@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     // Validate URL format
     try {
       new URL(url);
-    } catch (e) {
+    } catch {
       console.log('Invalid URL format:', url);
       return NextResponse.json(
         { error: 'Invalid URL format' },
